@@ -5,7 +5,7 @@ yum install -y nano
 yum install -y wget
 yum install -y zsh
 
-cat /root/prometheus/grafana_* > grafana-9.2.5-1.x86_64.rpm
+cat /root/prometheus/grafana_* > /root/prometheus/grafana-9.2.5-1.x86_64.rpm
 
 #Настройка firewall
 setenforce 0
