@@ -5,6 +5,8 @@ yum install -y nano
 yum install -y wget
 yum install -y zsh
 
+cat /root/prometheus/grafana_* > grafana-9.2.5-1.x86_64.rpm
+
 #Настройка firewall
 setenforce 0
 sed -i "s/=enforcing/=permissive/" /etc/selinux/config
@@ -37,13 +39,13 @@ systemctl daemon-reload
 systemctl enable --now prometheus.service
 
 #Установка и запуск grafana
-cat /root/prometheus/grafana_* > grafana-9.2.5-1.x86_64.rpm
-cat /root/prometheus/grafana_* > grafana-9.2.5-1.x86_64.rpm
 yum -y install /root/prometheus/*rpm
 rm -r /root/prometheus/*rpm
 systemctl enable grafana-server.service 
 systemctl start grafana-server.service
 systemctl restart grafana-server.service
+
+rm /root/prometheus/grafana_*
 
 echo "Done!"
 
